@@ -1,5 +1,15 @@
 ## Status
-⚠️ This project is currently under development (Work in Progress).
+⚠️ This project is currently under active development (Work in Progress).
+
+Kotobee is a Japanese learning application designed for both students who study Japanese and teachers who monitor learning progress.
+The application was developed by a team over a period of approximately three months.
+
+I was mainly responsible for implementing the grammar game, stage selection screen, and the teacher dashboard.
+By adopting a game-based learning approach, the application aims to keep students motivated and support continuous learning.
+
+Initially, the system was designed as a web-only application for both students and teachers.
+However, I proposed introducing a mobile application to improve accessibility for students.
+As a result, the student-facing application is currently being developed and delivered as a mobile app using Flutter.
 
 ## Screenshots (Mobile App)
 
@@ -25,14 +35,13 @@
   </tr>
 </table>
 
-
 ## Implemented Features
 - Three learning games for studying Japanese:
   - Kana
   - Vocabulary
   - Grammar
 - Web dashboard for teachers to monitor students’ learning progress
-- User login screen
+- User authentication (login)
 - Payment system
 
 ## Planned Features and Improvements
@@ -43,16 +52,13 @@
 - Bug fixes and minor stability improvements
 
 ## Tech Stack
-- Flutter (Mobile)
-- Laravel (Backend API and web front)
+- Flutter (Mobile Application)
+- Laravel (Backend API and Web Application)
 
 ## Project Structure
-- mobile_flutter/ : Flutter mobile application for learners
-- web_laravel/   : Laravel backend API and web front
+- `mobile_flutter/` : Flutter-based mobile application for learners  
+- `web_laravel/`   : Laravel backend API and teacher web dashboard  
 
 ## Note
-This project is still under active development, and there are areas that can be further improved.
-Some parts of the implementation may not yet be fully polished.
-
-I am continuously refining the codebase, improving the UI/UX, and addressing known issues.
-Thank you for your understanding.
+This project is still evolving, and some parts of the implementation require further refinement.
+I am continuously improving the codebase, enhancing the UI/UX, and addressing known issues to increase overall quality and maintainability.
