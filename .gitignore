@@ -1,0 +1,28 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.fleet/
+.zed/
+
+# Logs
+*.log
+
+# Environment files (never commit)
+.env
+.env.*
+*.pem
+*.key
+
+# Node (in case admin/web uses it somewhere)
+node_modules/
+
+# Common build outputs (safe umbrella)
+build/
+dist/
+coverage/
+
+# Optional: macOS local files
+*.swp
+
