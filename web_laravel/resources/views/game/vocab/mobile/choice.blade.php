@@ -19,7 +19,7 @@ console.log("POST answer:", "{{ old('answer') }}");
     @endphp --}}
 
     <div class="image-box {{ session('correct') ? 'correct-border' : '' }}">
-        <img src="{{ asset('storage/' . $question->image_url) }}" class="word-image">
+        <img src="{{ asset($question->image_url) }}" class="word-image">
     </div>
 
     <form id="choiceForm" method="POST" action="{{ route('vocab.mobile.checkChoice') }}">
