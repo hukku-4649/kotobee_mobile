@@ -4,16 +4,27 @@
 ## Screenshots (Mobile App)
 
 ### Stage Selection
-<img src="assets/screenshots/stage_select.png" width="280" />
+<p align="center">
+  <img src="assets/screenshots/stage_select.png" width="300" />
+</p>
 
-### Kana Learning Game
-<img src="assets/screenshots/kana_game.png" width="260" />
+<p align="center">
+  <figure style="display:inline-block; text-align:center; margin: 0 10px;">
+    <img src="assets/screenshots/kana_game.png" width="230" />
+    <figcaption><b>Kana Game</b></figcaption>
+  </figure>
 
-### Vocabulary Learning Game
-<img src="assets/screenshots/vocabulary_game.png" width="260" />
+  <figure style="display:inline-block; text-align:center; margin: 0 10px;">
+    <img src="assets/screenshots/vocabulary_game.png" width="230" />
+    <figcaption><b>Vocabulary Game</b></figcaption>
+  </figure>
 
-### Grammar Learning Game
-<img src="assets/screenshots/grammar_game.png" width="260" />
+  <figure style="display:inline-block; text-align:center; margin: 0 10px;">
+    <img src="assets/screenshots/grammar_game.png" width="230" />
+    <figcaption><b>Grammar Game</b></figcaption>
+  </figure>
+</p>
+
 
 
 ## Implemented Features
