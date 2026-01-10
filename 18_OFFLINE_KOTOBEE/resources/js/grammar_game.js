@@ -159,6 +159,8 @@ window.startGrammarGame = function(questions, stage_id) {
     const size = get_game_size();
     const is_mobile = is_mobile_device();
 
+    
+
     const config = {
         type: Phaser.AUTO,
         width: size.width,
@@ -170,7 +172,8 @@ window.startGrammarGame = function(questions, stage_id) {
         dom: { createContainer: true },
         scale: {
             ...(is_mobile ? {} : { autoCenter: Phaser.Scale.CENTER_BOTH})
-        }        
+        }
+            
     };
 
     console.log("innerWidth:", window.innerWidth);
@@ -294,6 +297,7 @@ class MainScene extends Phaser.Scene {
         const q = this.questions[this.cur_question_i];
         
         console.log('q.scale', q.scale);
+
         // 画像を出力
         this.questionImage = this.add.image(
             this.whole_W / 3,
@@ -356,11 +360,11 @@ class MainScene extends Phaser.Scene {
         this.conveyor_speed = 0;
 
         this.conveyor_min_speed = 80;  // フェーズアウト開始時の最低速度（px/s）
-        this.conveyor_max_speed = 500;  // フェーズアウト中の最高速度（px/s）
-        this.conveyor_accel     = 300;  // 加速量（px/s^2）
+        this.conveyor_max_speed = 3000;  // フェーズアウト中の最高速度（px/s）
+        this.conveyor_accel     = 600;  // 加速量（px/s^2）
         this.conveyor_decel     = 100;  // 減速量（px/s^2）
-        this.conveyor_phasein_start_speed = 300; // フェーズイン時の開始スピード
-        
+        this.conveyor_phasein_start_speed = 1000; // フェーズイン時の開始スピード
+     
         // 瓶のフェーズインのフラグ
         this.is_phase_in = false;
 
@@ -396,7 +400,8 @@ class MainScene extends Phaser.Scene {
         this.wave_speed = 4;
 
         // 液体を注ぐスピード
-        this.pouring_speed = 100;
+        this.pouring_speed = 150;
+
         
         // 液体を減速する倍率
         this.smooth_wave_ratio = 1 - Math.pow(this.wave_ratio, 2);
@@ -518,8 +523,8 @@ class MainScene extends Phaser.Scene {
     }
 
     adjust_image_size() {
-        const max_w = this.cx / 2.5;
-        const max_h = this.cy / 2.5;
+        const max_w = this.cx / 1.5;
+        const max_h = this.cy / 1.5;
         const max_size = Math.min(max_w, max_h);
         for (let i = 0; i < this.questions.length; i++) {
             const q = this.questions[i];

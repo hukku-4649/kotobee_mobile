@@ -14,7 +14,8 @@ console.log("POST answer:", "{{ old('answer') }}");
 
     
 
-    <h2 class="title">こたえをえらんでね！</h2>
+    <h2 class="title">こたえをえらんでね！</h2>   
+
 
     <div class="image-box {{ session('correct') ? 'correct-border' : '' }}">
          <img src="{{ asset($question->image_url) }}" class="word-image">

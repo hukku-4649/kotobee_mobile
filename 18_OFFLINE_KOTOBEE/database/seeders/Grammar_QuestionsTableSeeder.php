@@ -37,7 +37,9 @@ class Grammar_QuestionsTableSeeder extends Seeder
             ['game_id'=>3, 'created_by_admin_id'=>1, 'stage_id'=>3, 'note'=>'stage_3', 'image_url'=>'/storage/game/game_images/grammar/stage_3/correct_images/q_2.png', 'correct_sentence'=>'ほん は ５さつ です', 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
             ['game_id'=>3, 'created_by_admin_id'=>1, 'stage_id'=>3, 'note'=>'stage_3', 'image_url'=>'/storage/game/game_images/grammar/stage_3/correct_images/q_3.png', 'correct_sentence'=>'これ は わたし の けしゴム です', 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
             ['game_id'=>3, 'created_by_admin_id'=>1, 'stage_id'=>3, 'note'=>'stage_3', 'image_url'=>'/storage/game/game_images/grammar/stage_3/correct_images/q_4.png', 'correct_sentence'=>'これ は ふでばこ では ありません', 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
-            ['game_id'=>3, 'created_by_admin_id'=>1, 'stage_id'=>3, 'note'=>'stage_3', 'image_url'=>'/storage/game/game_images/grammar/stage_3/correct_images/q_5.png', 'correct_sentence'=>'これ は なふだ では ありません', 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],
+            ['game_id'=>3, 'created_by_admin_id'=>1, 'stage_id'=>3, 'note'=>'stage_3', 'image_url'=>'/storage/game/game_images/grammar/stage_3/correct_images/q_5.png', 'correct_sentence'=>'これ は なふだ では ありません', 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()],            
+
+
 
         ]);
     }

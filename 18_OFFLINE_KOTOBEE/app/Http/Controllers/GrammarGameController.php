@@ -26,7 +26,7 @@ class GrammarGameController extends Controller
         // dd($played_stage_ids);
 
         // Grammar Questionを取得
-        $stages = GrammarQuestion::where('game_id', 3)->get();
+        $stages = GrammarQuestion::where('game_id', 3)->get();        
             
         return view(
             'game.grammar.grammar_stages',

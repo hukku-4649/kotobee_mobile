@@ -32,6 +32,7 @@ console.log("POST answer:", "{{ old('answer') }}");
 
     <h2 class="title">じゅんばんに ならべてね！</h2>
 
+
     <!-- 画像（正解時は青枠） -->
     @if($question)
     <div class="image-box {{ session('correct') ? 'correct-border' : '' }}">

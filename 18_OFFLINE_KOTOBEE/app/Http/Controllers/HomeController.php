@@ -58,8 +58,8 @@ class HomeController extends Controller
             ->values()
             ->toArray();
 
-        // dd($stages);
-        
+        // dd($stages);                
+
         return view(
             'home',
             compact('stages', 'played_stage_ids')

@@ -24,11 +24,14 @@
             <img src="{{ asset('storage/images/icons/KotoBee_logo.png') }}"
                  alt="Logo" class="kb-logo">
         </a>
+
     </div>
 
     <!-- Center -->
     <div class="kb-center">
+
         @auth
+        
             @php
                 $approved_group = Auth::user()->approved_group();
             @endphp
@@ -38,7 +41,9 @@
                     {{ $approved_group->name }}
                 </span>
             @endif
+
         @endauth
+
     </div>
 
     <!-- Right -->
@@ -46,9 +51,10 @@
         @auth
             <!-- Avatar -->
             <a href="#" class="kb-avatar-link">
-                @if (Auth::user()->avatar_url)
-                    <img src="{{ asset('storage/images/avatars/' . Auth::user()->avatar_url) }}"
+                @if (Auth::user()->avatar_url)                                   
+                    <img src="{{ asset('storage/' . Auth::user()->avatar_url) }}"
                          class="kb-avatar">
+                    
                 @else
                     <i class="fa-solid fa-circle-user kb-avatar-icon"></i>
                 @endif

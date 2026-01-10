@@ -9,6 +9,13 @@ use App\Http\Controllers\VocabGameController;
 use App\Http\Controllers\GrammarGameController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KanaGameController;
+use App\Http\Controllers\Mobile\EnterController;
+use App\Http\Controllers\Mobile\GrammarController as MobileGrammarController;
+use App\Http\Controllers\Mobile\GrammarGameController as MobileGrammarGameController;
+use App\Http\Controllers\Mobile\KanaGameController as MobileKanaGameController;
+use App\Http\Controllers\Mobile\ProfileController as MobileProfileController;
+use App\Http\Controllers\Mobile\VocabGameController as MobileVocabGameController;
+use App\Http\Controllers\Mobile\VocabularyController as MobileVocabularyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VocabularyController;
 use App\Http\Controllers\StudentGroupController;
@@ -22,6 +29,12 @@ use App\Http\Controllers\PaymentController;
 Route::get('/', function () {
     return redirect()->route('login');
 })->middleware('guest');
+
+/* --- モバイル用ログインページ(ticket発行型) --- */
+
+Route::get('/mobile/enter', [EnterController::class, 'enter'])
+    ->name('mobile.enter');
+
 
 /* --- Auth --- */
 Auth::routes();
@@ -82,7 +95,11 @@ Route::middleware(['auth'])->group(function () {
 
     // Create Group 画面
     Route::get('/group/create', [GroupController::class, 'create'])->name('group.create');
-    // // 仮の GroupAdmin ダッシュボード画面
+
+    // 仮の GroupAdmin ダッシュボード画面
+    // Route::get('/group/dashboard', function () {
+    //     return 'Dashboard (Coming Soon)';
+    // })->name('group.dashboard');
         
     ///////// グループ管理 //////////
     /*** Create Group 画面 ***/
@@ -135,8 +152,9 @@ Route::middleware(['auth'])->group(function () {
     /*** grammarゲーム：ゲーム開始用API ***/
     Route::get('/api/grammar/start/{id}', [GrammarGameController::class, 'start'])
         ->name('grammar.start');
+    
     /*** grammarゲーム：ゲームスタート画面 ***/
-    Route::get('/grammar/start_page/{stage_id}', [GrammarGameController::class, 'start_page'])
+    Route::get('/grammar/start_page/{stage_id}', [GrammarGameController::class, 'start_page'])    
         ->name('grammar.start_page');
 
     /*** grammarゲーム：ゲーム画面表示用 ***/
@@ -170,15 +188,89 @@ Route::middleware(['auth'])->group(function () {
 
     /*** グループ申請処理 ***/
     Route::post('group/join/process/{group}', [StudentGroupController::class, 'join_submit'])
-        ->name('group.join.submit');
+        ->name('group.join.submit');  
+
+
+
+
+    ////////////////////////////////////  　　　モバイル用　　　　////////////////////////////////////
+
+    /****** grammarゲーム ******/
+
+    /*** grammarゲーム：ゲーム画面表示用 ***/
+    Route::get('/grammar/mobile/play/{stage_id}', [MobileGrammarGameController::class, 'play'])
+        ->name('grammar.mobile.play');
+                
+    /*** grammarゲーム：ゲーム開始用API ***/
+    Route::get('/api/grammar/mobile/start/{id}', [MobileGrammarGameController::class, 'start'])
+        ->name('grammar.mobile.start');
+
+    /*** grammarゲーム:結果データ保存***/
+    Route::post('/game/grammar/mobile/save', [MobileGrammarGameController::class, 'save_result'])
+        ->name('grammar.mobile.save_result');
+        
+    /****** vocabゲーム ******/
+
+    /*** vocabゲーム：ステージ開始 ***/
+    Route::get('/vocab/mobile/start/{stage_id}', [MobileVocabGameController::class, 'start'])
+        ->name('vocab.mobile.start');
+
+    /*** vocabゲーム：現在の問題表示 ***/
+    Route::get('/vocab/mobile/question', [MobileVocabGameController::class, 'showQuestion'])
+        ->name('vocab.mobile.show');
+
+    /*** vocabゲーム：4択チェック ***/
+    Route::post('/vocab/mobile/check-choice', [MobileVocabGameController::class, 'checkChoice'])
+        ->name('vocab.mobile.checkChoice');
+
+    /*** vocabゲーム：かな並べ替えチェック ***/
+    Route::post('/vocab/mobile/check-kana', [MobileVocabGameController::class, 'checkKana'])
+        ->name('vocab.mobile.checkKana');
+
+    Route::post('/vocab/mobile/next', [MobileVocabGameController::class, 'next'])
+        ->name('vocab.mobile.next');
+
+    Route::post('/vocab/mobile/finish', [MobileVocabGameController::class, 'finish'])
+        ->name('vocab.mobile.finish');
+
+    /****** kanaゲーム ******/
+
+    /*** ▼ kanaゲーム：設定 ID を指定してゲーム開始 ▼ ***/
+    Route::get('/kana/mobile/start/{id}', [MobileKanaGameController::class, 'start'])
+        ->name('kana.mobile.start');
+
+    /*** ▼ kanaゲーム：結果データ保存 ▼ ***/
+    Route::post('/game/kana/mobile/save',  [MobileKanaGameController::class, 'saveResult'])
+        ->name('kana.mobile.saveResult');
+
+    
+    /****** Profile ******/
+
+    Route::get('/mobile/profile', [MobileProfileController::class, 'index'])
+        ->name('mobile.profile');   
+
+    Route::get('/mobile/profile/edit', [MobileProfileController::class, 'edit'])
+        ->name('mobile.profile.edit');
+
+    Route::put('/mobile/profile/edit', [MobileProfileController::class, 'update'])
+        ->name('mobile.profile.update');
+
+    Route::delete('/mobile/profile', [MobileProfileController::class, 'destroy'])
+        ->name('mobile.profile.destroy');
+
+    Route::get('/mobile/vocabulary', [MobileVocabularyController::class, 'index'])
+        ->name('mobile.vocabulary.index');
+
+    Route::get('/mobile/grammar', [MobileGrammarController::class, 'index'])
+        ->name('mobile.grammar.index');
+
+    
 });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/vocab/create', [AdminVocabController::class, 'create'])->name('admin.vocab.create');
     Route::post('/admin/vocab/store', [AdminVocabController::class, 'store'])->name('admin.vocab.store');
 });
-
-
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Grammar 問題作成画面

@@ -1,0 +1,265 @@
+<?php
+
+namespace App\Http\Controllers\Mobile;
+
+use App\Http\Controllers\Controller;
+use App\Models\GameResult;
+use App\Models\GameSetting;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+class KanaGameController extends Controller
+{
+    ///// kanaゲームスタート /////
+    public function start($id)
+    {
+        $setting = GameSetting::findOrFail($id);
+
+        // ここで questions を生成（仮のサンプル）
+        $questions = collect($this->makeQuestions($setting->script, $setting->subtype));
+
+        return view('game.kana.mobile.kana_game', [
+            'mode'        => $setting->mode,
+            'order_type'  => $setting->order_type,
+            'sound_type'  => $setting->subtype,
+            'questions'   => $questions,
+            'setting_id'  => $setting->id,  // ← 追加！ 12/1
+        ]);
+
+    }
+
+    ///// 設問生成 /////
+    private function makeQuestions($script, $subtype)
+    {
+        // ▼ script → DB の kana_type
+        $kana_type = match ($script) {
+            'hiragana' => 1,
+            'katakana' => 2,
+            default => 1,
+        };
+
+        // ▼ subtype → DB の sound_type
+        $sound_type = match ($subtype) {
+            'seion' => 1,
+            'dakuon' => 2,
+            'youon' => 3,
+            default => 1,
+        };
+
+        // ▼ DB から該当の questions を取得（ID順）
+        $questions = DB::table('Kana_questions')
+            ->where('kana_type', $kana_type)
+            ->where('sound_type', $sound_type)
+            ->orderBy('id')
+            ->get()
+            ->toArray(); // array_spliceを使うので配列に変換
+
+        // ▼ 清音（seion）のみ、50音表の空欄補正を実施
+        if ($sound_type === 1) {
+            // や行補正（や・?・ゆ・?・よ）
+            array_splice($questions, 36, 0, [(object)['kana_char' => '', 'romaji' => '']]);
+            array_splice($questions, 38, 0, [(object)['kana_char' => '', 'romaji' => '']]);
+
+            // わ行補正（わ・?・を・?・ん）
+            array_splice($questions, 46, 0, [(object)['kana_char' => '', 'romaji' => '']]);
+            array_splice($questions, 48, 0, [(object)['kana_char' => '', 'romaji' => '']]);
+        }
+    
+        // 拗音の空欄補正（3列 → 5列）
+        if ($sound_type === 3) {
+
+            // 空白オブジェクト
+            $blank = (object)['kana_char' => '', 'romaji' => ''];
+
+            // 拗音は 11 行 × 3 列
+            // 1行につき： [1文字, 空白, 1文字, 空白, 1文字] を作る
+            $newQuestions = [];
+            $index = 0;
+
+            for ($i = 0; $i < 11; $i++) {
+
+                // 1列目
+                $newQuestions[] = $questions[$index];
+                // 2列目（空白）
+                $newQuestions[] = $blank;
+
+                // 3列目
+                $newQuestions[] = $questions[$index + 1];
+                // 4列目（空白）
+                $newQuestions[] = $blank;
+
+                // 5列目
+                $newQuestions[] = $questions[$index + 2];
+
+                // 次の行の先頭へ移動
+                $index += 3;
+            }
+
+            // 元の配列を上書き
+            $questions = $newQuestions;
+        }
+        return $questions;
+    }
+    
+    ///// 結果保存 /////
+    public function saveResult(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return response()->json(['error' => 'Login required'], 401);
+        }
+
+        $game_id = $request->game_id ?? 1;
+        $setting_id = $request->setting_id;
+        $mode = $request->mode;   // ← 追加
+
+        /**
+         * ① 保存値を mode で切り替え
+         * 60s-count → score を保存
+         * timeattack → play_time を保存
+         */
+        if ($mode === '60s-count') {
+
+            GameResult::create([
+                'user_id' => $user->id,
+                'game_id' => $game_id,
+                'setting_id' => $setting_id,
+                'score' => $request->score,
+                'play_time' => null,
+            ]);
+
+            // streak 更新（1日1回だけ増える仕様）
+        $today = Carbon::today();
+        $lastPlayed = $user->last_played_at
+            ? Carbon::parse($user->last_played_at)->startOfDay()
+            : null;
+
+        if (!$lastPlayed || !$lastPlayed->equalTo($today)) {
+
+            if ($lastPlayed && $lastPlayed->equalTo($today->copy()->subDay())) {
+                // 連続日
+                $user->streak += 1;
+            } else {
+                // 初回 or 途切れた
+                $user->streak = 1;
+            }
+
+            $user->last_played_at = $today;
+            $user->save();
+        }
+
+            // ランキング：score 高い順（DESC）
+            $orderColumn = 'score';
+            $orderDirection = 'desc';
+
+        } elseif ($mode === 'timeattack') {
+
+            GameResult::create([
+                'user_id' => $user->id,
+                'game_id' => $game_id,
+                'setting_id' => $setting_id,
+                'score' => null,
+                'play_time' => $request->play_time,  // 秒数（小数2桁）
+            ]);
+
+            // ランキング：play_time 少ない順（ASC）
+            $orderColumn = 'play_time';
+            $orderDirection = 'asc';
+        }
+
+
+        /**
+         * ② ランキング（ユーザーごと最高値）
+         */
+        if ($mode === '60s-count') {
+            $top3 = GameResult::select(
+                'user_id',
+                DB::raw("MAX($orderColumn) as best_value") // ASC なら MIN、DESC なら MAX
+            )
+            ->where('game_id', $game_id)
+            ->where('setting_id', $setting_id)
+            ->groupBy('user_id')
+            ->orderBy('best_value', $orderDirection)
+            ->limit(3)
+            ->get()
+            ->map(function ($row) use ($orderColumn) {
+                return [
+                    'name'  => $row->user->name ?? 'NoName',
+                    'value' => $row->best_value
+                ];
+            });
+        } else if ($mode === 'timeattack') {
+            $top3 = GameResult::select(
+                'user_id',
+                DB::raw("MIN($orderColumn) as best_value") // ASC なら MIN、DESC なら MAX
+            )
+            ->where('game_id', $game_id)
+            ->where('setting_id', $setting_id)
+            ->groupBy('user_id')
+            ->orderBy('best_value', $orderDirection)
+            ->limit(3)
+            ->get()
+            ->map(function ($row) use ($orderColumn) {
+                return [
+                    'name'  => $row->user->name ?? 'NoName',
+                    'value' => $row->best_value
+                ];
+            });
+        }        
+
+        /**
+         * ③ 自分の最高値
+        */        
+        if ($mode === '60s-count') {
+            $myBest = GameResult::where('user_id', $user->id)
+                ->where('game_id', $game_id)
+                ->where('setting_id', $setting_id)
+                ->max($orderColumn);  // ASC＝min, DESC＝max と同じ動き
+        } else if ($mode === 'timeattack') {
+            $myBest = GameResult::where('user_id', $user->id)
+                ->where('game_id', $game_id)
+                ->where('setting_id', $setting_id)
+                ->min($orderColumn);  // ASC＝min, DESC＝max と同じ動き
+        }
+
+        /**
+         * ④ 自分の順位
+         */
+        if ($mode === '60s-count') {
+            $myRank = GameResult::select(
+                'user_id',
+                DB::raw("MAX($orderColumn) as best_value")
+            )
+            ->where('game_id', $game_id)
+            ->where('setting_id', $setting_id)
+            ->groupBy('user_id')
+            ->having('best_value', $orderDirection === 'asc' ? '<' : '>', $myBest)
+            ->count() + 1;
+        } else if ($mode === 'timeattack') {
+            $myRank = GameResult::select(
+                'user_id',
+                DB::raw("MIN($orderColumn) as best_value")
+            )
+            ->where('game_id', $game_id)
+            ->where('setting_id', $setting_id)
+            ->groupBy('user_id')
+            ->having('best_value', $orderDirection === 'asc' ? '<' : '>', $myBest)
+            ->count() + 1;
+        }
+                    
+
+        return response()->json([
+            'saved'       => true,
+            'mode'        => $mode,
+            'top3'        => $top3,
+            'my_best'     => $myBest,
+            'my_rank'     => $myRank
+        ]);
+    }
+
+
+
+}

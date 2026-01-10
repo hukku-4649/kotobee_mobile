@@ -37,6 +37,8 @@ function esc_close_once(e) {
     if (e.key === "Escape") close_modal();
 }
 
+
+
 // 六角形クリックで遷移せずにモーダルを出す（イベントデリゲーション）
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("circle");

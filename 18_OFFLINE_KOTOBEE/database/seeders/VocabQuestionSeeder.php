@@ -131,5 +131,6 @@ class VocabQuestionSeeder extends Seeder
                 );
             }
         }
+
     }
 }

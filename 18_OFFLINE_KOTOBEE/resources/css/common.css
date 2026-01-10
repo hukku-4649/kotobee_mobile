@@ -207,32 +207,34 @@ html, body {
 }
 
 /* PC 画面用にデザイン切り替え */
+
+/* pxを付与 */
 @media (min-width: 600) { /* 768px) { */
 
-    /* Login wrapper 全体を中央寄せ */
-    .login-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 80px; /* Navbar 60px + 余白 */
-    }
+  /* Login wrapper 全体を中央寄せ */
+  .login-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 80px; /* Navbar 60px + 余白 */
+  }
 
-    /* Bee の下に山を置くだけ（高さは維持） */
-    .login-mountain-wrapper {
-        position: relative;
-        width: 600px;   /* PC では横幅を制限する */
-        margin-top: 20px;
-    }
+  /* Bee の下に山を置くだけ（高さは維持） */
+  .login-mountain-wrapper {
+      position: relative;
+      width: 600px;   /* PC では横幅を制限する */
+      margin-top: 20px;
+  }
 
-    /* ★ ここがポイント：フォームの absolute を解除して通常配置にする */
-    .login-form-card {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        margin-top: -80px;   /* 山に少し重ねる自然な位置（調整可能） */
-        width: 350px;        /* PC は少し幅広く */
-    }
+  /* ★ ここがポイント：フォームの absolute を解除して通常配置にする */
+  .login-form-card {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      margin-top: -80px;   /* 山に少し重ねる自然な位置（調整可能） */
+      width: 350px;        /* PC は少し幅広く */
+  }
 }
 
 /* use group/create.blade.php */
