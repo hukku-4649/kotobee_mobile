@@ -8,23 +8,22 @@
   <img src="assets/screenshots/stage_select.png" width="300" />
 </p>
 
-<p align="center">
-  <figure style="display:inline-block; text-align:center; margin: 0 10px;">
-    <img src="assets/screenshots/kana_game.png" width="230" />
-    <figcaption><b>Kana Game</b></figcaption>
-  </figure>
-
-  <figure style="display:inline-block; text-align:center; margin: 0 10px;">
-    <img src="assets/screenshots/vocabulary_game.png" width="230" />
-    <figcaption><b>Vocabulary Game</b></figcaption>
-  </figure>
-
-  <figure style="display:inline-block; text-align:center; margin: 0 10px;">
-    <img src="assets/screenshots/grammar_game.png" width="230" />
-    <figcaption><b>Grammar Game</b></figcaption>
-  </figure>
-</p>
-
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="assets/screenshots/kana_game.png" width="230" /><br>
+      <b>Kana Game</b>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/vocabulary_game.png" width="230" /><br>
+      <b>Vocabulary Game</b>
+    </td>
+    <td align="center">
+      <img src="assets/screenshots/grammar_game.png" width="230" /><br>
+      <b>Grammar Game</b>
+    </td>
+  </tr>
+</table>
 
 
 ## Implemented Features
