@@ -1,6 +1,20 @@
 ## Status
 ⚠️ This project is currently under development (Work in Progress).
 
+## Screenshots (Mobile App)
+
+### Stage Selection
+![Stage Selection](assets/screenshots/stage_select.png)
+
+### Kana Learning Game
+![Kana Game](assets/screenshots/kana_game.png)
+
+### Vocabulary Learning Game
+![Vocabulary Game](assets/screenshots/vocabulary_game.png)
+
+### Grammar Learning Game
+![Grammar Game](assets/screenshots/grammar_game.png)
+
 ## Implemented Features
 - Three learning games for studying Japanese:
   - Kana
