@@ -15,9 +15,6 @@
 ### Grammar Learning Game
 <img src="assets/screenshots/grammar_game.png" width="260" />
 
-<img src="assets/screenshots/kana_game.png" height="420" />
-<img src="assets/screenshots/vocabulary_game.png" height="420" />
-<img src="assets/screenshots/grammar_game.png" height="420" />
 
 ## Implemented Features
 - Three learning games for studying Japanese:
