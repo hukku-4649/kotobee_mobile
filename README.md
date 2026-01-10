@@ -4,16 +4,20 @@
 ## Screenshots (Mobile App)
 
 ### Stage Selection
-![Stage Selection](assets/screenshots/stage_select.png)
+<img src="assets/screenshots/stage_select.png" width="280" />
 
 ### Kana Learning Game
-![Kana Game](assets/screenshots/kana_game.png)
+<img src="assets/screenshots/kana_game.png" width="260" />
 
 ### Vocabulary Learning Game
-![Vocabulary Game](assets/screenshots/vocabulary_game.png)
+<img src="assets/screenshots/vocabulary_game.png" width="260" />
 
 ### Grammar Learning Game
-![Grammar Game](assets/screenshots/grammar_game.png)
+<img src="assets/screenshots/grammar_game.png" width="260" />
+
+<img src="assets/screenshots/kana_game.png" height="420" />
+<img src="assets/screenshots/vocabulary_game.png" height="420" />
+<img src="assets/screenshots/grammar_game.png" height="420" />
 
 ## Implemented Features
 - Three learning games for studying Japanese:
