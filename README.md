@@ -52,8 +52,19 @@ As a result, the student-facing application is currently being developed and del
 - Bug fixes and minor stability improvements
 
 ## Tech Stack
-- Flutter (Mobile Application)
-- Laravel (Backend API and Web Application)
+
+### Mobile Application
+- Flutter
+- Dart
+
+### Backend / Web Application
+- Laravel
+- PHP
+- MySQL
+
+### Development Environment & Tools
+- MAMP (local development environment)
+- Git / GitHub
 
 ## Project Structure
 - `mobile_flutter/` : Flutter-based mobile application for learners  
