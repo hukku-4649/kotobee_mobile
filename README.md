@@ -19,7 +19,7 @@
 
 ## Tech Stack
 - Flutter (Mobile)
-- Laravel (Backend API)
+- Laravel (Backend API and web front)
 
 ## Project Structure
 - mobile_flutter/ : Flutter mobile application for learners
