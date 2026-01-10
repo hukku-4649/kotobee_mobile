@@ -1,0 +1,433 @@
+/* erase the html_body margin */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================
+   Navbar
+============================ */
+
+.kb-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(51, 51, 51, 0.7); /* #333333, 70% */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 1000; /* 前面に表示 */
+}
+
+/* Logo */
+.kb-logo {
+    height: 40px;
+    width: auto;
+    margin-top: 5px;
+  }
+
+/* Center group name */
+.kb-group-name {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Avatar */
+.kb-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 5px;
+
+}
+
+/* Avatar not exist */
+.kb-avatar-icon {
+    font-size: 38px;
+    color: white;
+}
+
+/* Hamburger Menu */
+.kb-hamburger {
+    font-size: 32px;
+    cursor: pointer;
+    color: black;
+    padding: 4px 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+}
+ 
+.kb-menu-list {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    margin-top: 10px;
+}
+
+.kb-menu-item {
+    display: block;
+    color: black;
+    text-decoration: none;
+    padding: 6px 0;
+}
+
+/* Layout areas */
+.kb-left, .kb-right, .kb-center {
+    display: flex;
+    align-items: center;
+}
+
+/* Center section expands */
+.kb-center {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/* Body Background */
+.kb-main {
+    position: relative;
+    top: 60px; /* Navbar の高さ分だけ下げる */
+    height: calc(100vh - 60px); /* ここだけスクロール */
+    overflow-y: auto;
+    background-color: #FFFFCE;
+    /* width: 100%; */
+    padding: 16px;
+}
+
+/* Remove default triangle from <details> */
+.kb-details summary {
+    list-style: none;
+}
+
+.kb-details summary::-webkit-details-marker {
+    display: none;
+}
+
+/* =====================================
+   Login Page Custom Design
+===================================== */
+
+/* 全体を中央寄せに */
+.login-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ===== Login Catch Copy ===== */
+.login-catchcopy {
+    text-align: center;
+    margin-bottom: 5px; /* KotoBee との距離 */
+}
+
+.login-catchcopy-en {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #5a4a2f; /* 落ち着いたブラウン系 */
+    letter-spacing: 0.02em;
+}
+
+.login-catchcopy-ja {
+    font-size: 1rem;
+    font-style: italic;
+    color: #6b6b6b;
+    margin-top: 2px;
+}
+
+/* "KotoBee" タイトル */
+.login-title {
+    color: #744805;
+    font-size: 38px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+/* Bee イラスト */
+.login-bee {
+    width: 300px;
+    margin-bottom: 1px;
+}
+
+/* 山の画像コンテナー */
+.login-mountain-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 山の画像（横幅いっぱい） */
+.login-mountain {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* 山の上に浮かせるフォーム */
+.login-form-card {
+    position: absolute;
+    top: 16%;              /* 上から20%の位置に浮かせる（調整OK） */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFE693;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* フォームタイトル */
+.login-form-title {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #744805;
+}
+
+/* button */
+.kb-login-btn {
+    background-color: #FFC653 !important; /* ボタン背景色 */
+    border: 2px solid #8B4513 !important; /* 茶色の縁（SaddleBrown） */
+    color: #000; /* 文字色（必要なら調整） */
+}
+
+.kb-login-btn:hover {
+    background-color: #e6b247 !important; /* 少し暗くしてホバー用 */
+    border-color: #8B4513 !important;
+}
+
+/* PC 画面用にデザイン切り替え */
+@media (min-width: 600) { /* 768px) { */
+
+    /* Login wrapper 全体を中央寄せ */
+    .login-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px; /* Navbar 60px + 余白 */
+    }
+
+    /* Bee の下に山を置くだけ（高さは維持） */
+    .login-mountain-wrapper {
+        position: relative;
+        width: 600px;   /* PC では横幅を制限する */
+        margin-top: 20px;
+    }
+
+    /* ★ ここがポイント：フォームの absolute を解除して通常配置にする */
+    .login-form-card {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: -80px;   /* 山に少し重ねる自然な位置（調整可能） */
+        width: 350px;        /* PC は少し幅広く */
+    }
+}
+
+/* use group/create.blade.php */
+.plan-bg {
+    background-color: #FFFFCE;
+    border: 0;
+}
+
+.plan-img {
+    width: 60%;
+    max-width: 130px;
+    height: auto;
+}
+
+.plan-box {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.plan-box input[type="radio"] {
+    margin-top: 5px;
+}
+
+
+
+:root{
+    --sidebar-w: 280px;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --active-bg: #eaf1ff;
+    --active-text: #1e40af;
+    --border: rgba(17, 24, 39, 0.08);
+  }
+
+  body{
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: #fff;
+    color: var(--text);
+  }
+
+  /* 開くボタン */
+  .open-btn{
+    position: fixed;
+    top: 65px;
+    left: 0px;
+
+    margin: 20px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    z-index: 1101;
+  }
+
+  /* オーバーレイ */
+  .overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
+    z-index: 1100;
+  }
+  .overlay.active{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* サイドバー本体 */
+  .sidebar{
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: var(--sidebar-w);
+    height: calc(100vh - 60px);
+    background: #ffffff;
+    border-right: 1px solid var(--border);
+    box-shadow: 18px 0 40px rgba(0,0,0,0.08);
+
+    transform: translateX(-110%);
+    transition: transform .28s ease;
+    z-index: 1300;   
+
+    padding: 28px 18px;
+    box-sizing: border-box;
+  }
+  .sidebar.active{
+    transform: translateX(0);
+  }
+
+  /* タイトル */
+  .sidebar h2{
+    margin: 0 0 18px 0;
+    padding: 6px 10px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    color: #111827;
+  }
+
+  /* 閉じるボタン（右上） */
+  .close-btn{
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(17, 24, 39, 0.06);
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 36px;
+    color: #111827;
+  }
+  .close-btn:hover{
+    background: rgba(17, 24, 39, 0.10);
+  }
+
+  /* メニュー */
+  .menu{
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 6px;
+  }
+
+  .menu a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: var(--text);
+
+    padding: 12px 12px;
+    border-radius: 14px;
+
+    font-size: 18px;
+    line-height: 1;
+    transition: background .15s ease, color .15s ease;
+  }
+
+  .menu a i{
+    width: 22px;
+    text-align: center;
+    color: var(--muted) !important;
+    font-size: 18px;
+  }
+
+  .sidebar .menu a i{
+    color: var(--muted) !important;
+  }
+
+  .menu a:hover{
+    background: rgba(31, 41, 55, 0.06);
+  }
+
+  /* 選択中（画像の“青い帯”） */
+  .menu a.active{
+    background: var(--active-bg) !important;
+    color: var(--active-text) !important;
+  }
+  .menu a.active i{
+    color: var(--active-text) !important;
+  }
+
+  /* スマホ：幅を固定→可変に */
+  @media (max-width: 480px){
+    :root{ --sidebar-w: 82vw; }
+    .sidebar h2{ font-size: 24px; }
+    .menu a{ font-size: 17px; }
+  }
+
+  /* バッジ獲得アニメーション */
+  .badge-spin {
+      width: 120px;
+      animation: spin 1s ease-out 1;
+  }
+
+  @keyframes spin {
+      from {
+          transform: rotateY(0deg);
+      }
+      to {
+          transform: rotateY(360deg);
+      }
+  }
