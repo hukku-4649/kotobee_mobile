@@ -35,6 +35,12 @@ As a result, the student-facing application is currently being developed and del
   </tr>
 </table>
 
+## Screenshots (Teacher Dashboard / Web)
+
+<p align="center">
+  <img src="assets/screenshots/teacher_dashboard.png" width="900" />
+</p>
+
 ## Implemented Features
 - Three learning games for studying Japanese:
   - Kana
