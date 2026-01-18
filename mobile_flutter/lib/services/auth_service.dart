@@ -296,7 +296,6 @@ import '../network/api_client.dart';
 import '../exceptions/auth_exception.dart';
 import '../models/user.dart';
 
-
 class AuthService {
   AuthService({required ApiClient apiClient}) : _api = apiClient;
 
@@ -309,10 +308,10 @@ class AuthService {
   Future<void> _setToken(String token) => _storage.write(key: _tokenKey, value: token);
   Future<void> clearToken() => _storage.delete(key: _tokenKey);
 
-  // ✅ 追加：ログイン中ユーザー（メモリ保持）
+  // 追加：ログイン中ユーザー（メモリ保持）
   User? _currentUser;
 
-  // ✅ 追加：参照用（未ログインなら例外）
+  // 追加：参照用（未ログインなら例外）
   User get currentUser {
     final u = _currentUser;
     if (u == null) throw AuthException('未ログインです。');
@@ -321,7 +320,7 @@ class AuthService {
 
   bool get isLoggedIn => _currentUser != null;
 
-  // ✅ 追加：/api/me を叩いて currentUser を更新
+  // 追加：/api/me を叩いて currentUser を更新
   Future<User> refreshMe() async {
     final token = await getToken();
     if (token == null || token.isEmpty) {
@@ -384,7 +383,7 @@ class AuthService {
 
       await _setToken(token);
 
-      // ✅ 追加：ログイン後にユーザー情報を取得して保持
+      // 追加：ログイン後にユーザー情報を取得して保持
       await refreshMe();
     } on DioException catch (e) {
       final status = e.response?.statusCode;
@@ -454,7 +453,7 @@ class AuthService {
 
       await _setToken(token);
 
-      // ✅ 追加：登録後もユーザー情報を取得して保持
+      // 追加：登録後もユーザー情報を取得して保持
       await refreshMe();
     } on DioException catch (e) {
       final status = e.response?.statusCode;
