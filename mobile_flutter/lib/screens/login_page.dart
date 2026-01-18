@@ -61,6 +61,9 @@ class _LoginPageState extends State<LoginPage> {
     // tryブロック
     try {
 
+      debugPrint('BASE_URL = ${ServiceLocator.apiClient.dio.options.baseUrl}');
+    debugPrint('REQUEST = ${ServiceLocator.apiClient.dio.options.baseUrl}/api/login');
+
       await ServiceLocator.authService.login(
         // trimで前後空白を除去
         email: _emailCtrl.text.trim(),

@@ -296,6 +296,7 @@ import '../network/api_client.dart';
 import '../exceptions/auth_exception.dart';
 import '../models/user.dart';
 
+
 class AuthService {
   AuthService({required ApiClient apiClient}) : _api = apiClient;
 
