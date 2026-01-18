@@ -24,37 +24,38 @@
             <img src="{{ asset('storage/images/icons/KotoBee_logo.png') }}"
                  alt="Logo" class="kb-logo">
         </a>
-
     </div>
 
     <!-- Center -->
     <div class="kb-center">
-
         @auth
-        
-            @php
-                $approved_group = Auth::user()->approved_group();
-            @endphp
 
-            @if ($approved_group)
+            @php
+                $current_group_id = session('current_group_id');
+                $group = $current_group_id 
+                    ? \App\Models\Group::find($current_group_id)
+                    : null;
+            @endphp
+    
+            @if ($group)
                 <span class="kb-group-name">
-                    {{ $approved_group->name }}
+                    {{ $group->name }}
                 </span>
             @endif
 
         @endauth
-
     </div>
 
     <!-- Right -->
     <div class="kb-right">
+
         @auth
+            
             <!-- Avatar -->
-            <a href="#" class="kb-avatar-link">
-                @if (Auth::user()->avatar_url)                                   
+            <a href="{{ route('profile')}}" class="kb-avatar-link">
+                @if (Auth::user()->avatar_url)
                     <img src="{{ asset('storage/' . Auth::user()->avatar_url) }}"
                          class="kb-avatar">
-                    
                 @else
                     <i class="fa-solid fa-circle-user kb-avatar-icon"></i>
                 @endif
@@ -100,6 +101,10 @@
                               class="d-none">
                             @csrf
                         </form>
+<<<<<<< HEAD
+=======
+
+>>>>>>> offline_kotobee/master
                     </div>
 
                 </details>
@@ -107,5 +112,7 @@
             </div>
 
         @endauth
+
     </div>
+
 </nav>

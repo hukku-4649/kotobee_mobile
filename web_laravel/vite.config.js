@@ -1,5 +1,5 @@
 
-// // npm run build
+// npm run build
 
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
@@ -24,6 +24,9 @@ export default defineConfig({
                 'resources/js/mobile/grammar_game.js',
                 'resources/js/mobile/kana_game_60s.js',
                 'resources/js/mobile/kana_game_timeattack.js',
+                'resources/js/vocab_result_modal.js',   
+                'resources/css/style.css',
+                'resources/css/style_kana.css',      
 
                 'resources/css/app.css',
                 'resources/css/common.css',
@@ -39,6 +42,7 @@ export default defineConfig({
                 'resources/css/vocabulary.css',
 
                 'resources/css/mobile/kana_game.css',
+                'resources/css/dashboard/playcount-cards.css',
 
             ],
             refresh: true,
@@ -47,22 +51,18 @@ export default defineConfig({
 })
 
 
-
-// npm run dev
-
 // import { defineConfig } from 'vite';
 // import laravel from 'laravel-vite-plugin';
 
 // export default defineConfig({
-//   plugins: [
-//     laravel({
-//       input: [
-//         'resources/css/app.css',
-//         'resources/js/app.js',
-//       ],
-//       refresh: true,
-//     }),
-//   ],
-// });
-
+//     plugins: [
+//         laravel({
+//             input: [
+//                 'resources/sass/app.scss',
+//                 'resources/js/app.js',
+//             ],
+//             refresh: true,
+//         }),
+//     ],
+// })      
 

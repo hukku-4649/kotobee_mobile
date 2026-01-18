@@ -33,7 +33,24 @@ function send_result(score) {
     
 }
 
+function enable_view_port() {
+    let meta = document.querySelector('meta[name="viewport"]');
+
+    if (!meta) {
+        meta = document.createElement('meta');
+        meta.name = 'viewport';
+        document.head.appendChild(meta);
+    }
+
+    meta.setAttribute(
+        'content',
+        'width=device-width, initial-scale=1'
+    );
+}
+
 function show_result_modal(data, score) {
+
+    enable_view_port();
 
     // ★ まず Phaser のゲームを完全に破棄する
     if (window.grammarGame) {
@@ -120,7 +137,9 @@ function show_result_modal(data, score) {
 
     content.innerHTML = html;
     modal.style.display = "block";
+
 }
+
 
 function is_mobile_device() {
     const ua = navigator.userAgent;
@@ -159,8 +178,6 @@ window.startGrammarGame = function(questions, stage_id) {
     const size = get_game_size();
     const is_mobile = is_mobile_device();
 
-    
-
     const config = {
         type: Phaser.AUTO,
         width: size.width,
@@ -172,8 +189,7 @@ window.startGrammarGame = function(questions, stage_id) {
         dom: { createContainer: true },
         scale: {
             ...(is_mobile ? {} : { autoCenter: Phaser.Scale.CENTER_BOTH})
-        }
-            
+        }        
     };
 
     console.log("innerWidth:", window.innerWidth);
@@ -362,9 +378,9 @@ class MainScene extends Phaser.Scene {
         this.conveyor_min_speed = 80;  // フェーズアウト開始時の最低速度（px/s）
         this.conveyor_max_speed = 3000;  // フェーズアウト中の最高速度（px/s）
         this.conveyor_accel     = 600;  // 加速量（px/s^2）
-        this.conveyor_decel     = 100;  // 減速量（px/s^2）
+        this.conveyor_decel     = 400;  // 減速量（px/s^2）
         this.conveyor_phasein_start_speed = 1000; // フェーズイン時の開始スピード
-     
+        
         // 瓶のフェーズインのフラグ
         this.is_phase_in = false;
 
@@ -401,7 +417,6 @@ class MainScene extends Phaser.Scene {
 
         // 液体を注ぐスピード
         this.pouring_speed = 150;
-
         
         // 液体を減速する倍率
         this.smooth_wave_ratio = 1 - Math.pow(this.wave_ratio, 2);
@@ -551,6 +566,8 @@ class MainScene extends Phaser.Scene {
 
     // クリア時の関数
     on_clear() {
+        console.log("[on_clear] called", this.time.now, this.start_time);
+
         this.is_timer_activate = false;
 
         const final_time = (this.time.now - this.start_time) / 1000;  
@@ -1693,10 +1710,11 @@ class MainScene extends Phaser.Scene {
             this.check_button = null;                    
         }
 
-        // 正解、不正解の処理
+        // 正解、不正解の処理      
+
         if (correct_sentence_num === user_sentence_num) {           
 
-            if (this.cur_question_i + 1 == this.questions.length) {
+            if (this.cur_question_i + 1 == 5) {
                 this.on_clear();
                 return;
             }        
@@ -1925,7 +1943,7 @@ class MainScene extends Phaser.Scene {
 
         this.tweens.add({
             targets: conts,
-            x: '+=6',
+            x: '-=3',
             yoyo: true,
             repeat: 5,
             duration: 40,
@@ -1939,7 +1957,7 @@ class MainScene extends Phaser.Scene {
             }
         });
 
-    }
+    }   
 
     ///// checkやcontinueなどのbutton /////
     create_button(x, y, label, color, opacity, on_click) {

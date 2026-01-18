@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VocabQuestion;
 use App\Models\GameResult;
+use App\Services\BadgeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,6 +39,7 @@ class VocabGameController extends Controller
             'vocab_questions' => array_values($questionSet),
             'vocab_index' => 0,
             'vocab_start_time' => microtime(true),
+            'vocab_stage_id' => $stageId,
         ]);
 
         return $this->showQuestion();
@@ -52,7 +54,7 @@ class VocabGameController extends Controller
         $index = session('vocab_index', 0);
 
         if ($index >= count($questions)) {
-            return view('vocab.kana', [
+            return view('game.vocabulary.kana', [
                 'question' => null,
                 'chars' => [],
                 'shuffled' => [],
@@ -71,7 +73,7 @@ class VocabGameController extends Controller
         if ($current['type'] === 'choice') {
             $choices = $this->makeChoices($word);
 
-            return view('vocab.choice', [
+            return view('game.vocabulary.choice', [
                 'question' => $word,
                 'choices' => $choices,
                 'isLast' => $isLast, // ★ 追加
@@ -108,7 +110,7 @@ class VocabGameController extends Controller
 
             shuffle($choices);
 
-            return view('vocab.kana', [
+            return view('game.vocabulary.kana', [
                 'question' => $word,
                 'chars' => $chars,
                 'shuffled' => $choices,
@@ -256,6 +258,8 @@ class VocabGameController extends Controller
     public function finish()
     {
         $start = session('vocab_start_time');
+        $stageId = session('vocab_stage_id');
+
         $time = microtime(true) - $start;
         $time = min(round($time, 2), 9999.99);
 
@@ -268,6 +272,7 @@ class VocabGameController extends Controller
             'game_id' => 2,
             'setting_id' => null,
             'created_by_admin_id' => null,
+            'vcab_stage_id' => $stageId,
             'score' => null,
             'play_time' => round($time, 2),
         ]);
@@ -326,6 +331,10 @@ class VocabGameController extends Controller
             ->havingRaw("MIN($orderColumn) < ?", [$myBest])
             ->count() + 1;
 
+        // バッジ付与処理の追加
+        $badgeService = new BadgeService();
+        $badge = $badgeService->giveNextBadge($user);
+
         // JSONで返す
         return response()->json([
             'saved' => true,
@@ -333,6 +342,7 @@ class VocabGameController extends Controller
             'my_best' => $myBest,
             'my_rank' => $myRank,
             'top3' => $top3,
+            'badge' => $badge,
             'streak' => $user->streak,
         ]);
     }

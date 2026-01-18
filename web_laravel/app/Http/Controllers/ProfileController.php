@@ -20,14 +20,12 @@ class ProfileController extends Controller
         $prefectureId = $user->prefecture_id ?? 0;
 
         // prefecture_id 以下のバッジを取得
-        // $badges = \DB::table('badges')
-        //     ->where('id', '<=', $prefectureId)
-        //     ->orderBy('id')
-        //     ->get();
+        $badges = \DB::table('badges')
+            ->where('id', '<=', $prefectureId)
+            ->orderBy('id')
+            ->get();
 
-        // return view('profile.profile', compact('user', 'streak', 'badges'));
-
-        return view('profile.profile', compact('user', 'streak'));
+        return view('profile.profile', compact('user', 'streak', 'badges'));
     }
 
 
