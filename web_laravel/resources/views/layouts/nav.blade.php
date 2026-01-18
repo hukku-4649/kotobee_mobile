@@ -101,10 +101,6 @@
                               class="d-none">
                             @csrf
                         </form>
-<<<<<<< HEAD
-=======
-
->>>>>>> offline_kotobee/master
                     </div>
 
                 </details>
