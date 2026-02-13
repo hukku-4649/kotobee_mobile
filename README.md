@@ -45,6 +45,40 @@ Kotobeeの名称に合わせて蜂を連想させるデザインを採用し、�
 
 また、UI面では左右ボタンおよびスワイプ操作によって各ステージを中心とした画面に切り替えられるよう設計し、直感的かつゲーム性のある操作体験を実現しました。
 
+### 2. Grammarゲーム 
+
+### 2.1 概要
+ハチミツを瓶に注ぐハチミツ向上をイメージしてこのゲームを作成いたしました。ゲームの作成にはfazer3というjavascriptのエンジンを使用して作成いたしました。
+
+### 2.2 スワイプ機能
+
+<p align="center">
+  <img src="assets/screenshots/grammar_swip.png" width="300" />
+</p>
+
+瓶をスワイプ操作で動かせるインタラクションを実装しました。  
+ドラッグジェスチャーを検知し、ユーザーの操作に応じてリアルタイムに位置を更新することで、直感的でゲーム性のあるUIを実現しています。
+
+### 2.3 ベルトコンベア機能
+
+<p align="center">
+  <img src="assets/screenshots/jar_moving_1.png" width="200" />
+  <img src="assets/screenshots/jar_moving_2.png" width="200" />
+  <img src="assets/screenshots/jar_moving_3.png" width="200" />
+  <img src="assets/screenshots/jar_moving_4.png" width="200" />
+</p>
+
+設問の切り替え時には、ベルトコンベアのように横方向へスライドするアニメーションを実装しました。  
+単なる画面遷移ではなく、連続性のある動きを加えることで、視覚的な流れと没入感を高めています。
+
+### 2.4 波のアニメーション
+
+<p align="center">
+  <img src="assets/screenshots/grammar_wave.png" width="300" />
+</p>
+
+瓶にハチミツを注ぐアニメーションでは、フーリエ級数の概念を応用し、複数のsin波を合成して滑らかな波形を生成しました。  振幅・周期・位相を調整することで、単純な波ではなく、より自然な液体表現を実現しています。
+
 
 ## 実装済み機能
 - 日本語学習のための3つのゲーム
