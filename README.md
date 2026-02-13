@@ -136,7 +136,20 @@ Kotobeeの名称に合わせて蜂を連想させるデザインを採用し、�
 - [プロフィール編集画面1](assets/student_images/profile_edit_1.png)
 - [プロフィール編集画面2](assets/student_images/profile_edit_2.png)
 
-
+### グループ管理者イメージ
+- [グループオプション選択画面](assets/administrator_images/group_sub.png)
+- [決済画面](assets/administrator_images/group_purchase.png)
+- [決済終了画面](assets/administrator_images/purchase_finish.png)
+- [グループダッシュボード画面1](assets/administrator_images/dashboard_1.png)
+- [グループダッシュボード画面2](assets/administrator_images/dashboard_2.png)
+- [グループダッシュボード画面3](assets/administrator_images/dashboard_3.png)
+- [生徒の申請の承認と否認の選択画面](assets/administrator_images/group_student_list.png)
+- [グループ一覧画面](assets/administrator_images/group_list.png)
+- [グループ編集画面](assets/administrator_images/group_edit.png)
+- [グループから生徒を削除する画面](assets/administrator_images/student_delete.png)
+- [グループ作成画面](assets/administrator_images/group_create.png)
+- [問題作成画面](assets/administrator_images/question_create.png)
+- [グループ削除画面](assets/administrator_images/group_delete.png)
 
 
 
