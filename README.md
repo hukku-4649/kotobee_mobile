@@ -90,10 +90,14 @@ Kotobeeは、日本語を学習する学生と、学習状況を管理する教�
 - [プロフィール編集画面1](assets/student_images/profile_edit_1.png)
 - [プロフィール編集画面2](assets/student_images/profile_edit_2.png)
 
-### 生徒イメージ(flutter)
-
-
-
+### 生徒イメージ(flutter、一部のみ)
+- [ログイン画面](assets/student_images_flutter/login.png)
+- [ゲーム選択画面](assets/student_images_flutter/game_selection.png)
+- [Kanaゲームプレイ画面](assets/student_images_flutter/kana_game_play.png)
+- [Vocabゲームプレイ画面](assets/student_images_flutter/vocab_game_play.png)
+- [Grammarゲームプレイ画面](assets/student_images_flutter/grammar_game_play.png)
+- [VocabとGrammarゲームの選択画面](assets/student_images_flutter/vocab_grammar_selection.png)
+- [プロフィール画面](assets/student_images_flutter/profile.png)
 
 
 ### グループ管理者イメージ
