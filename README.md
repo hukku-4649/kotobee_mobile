@@ -1,4 +1,6 @@
 ## 概要
+
+
 Kotobeeは、日本語を学習する学生と、学習状況を管理する教師を対象とした日本語学習アプリケーションです。本アプリケーションは、3名のチームで約3か月間かけて開発しました。私は主に、Grammarゲーム、ステージ選択画面、そして教師用ダッシュボードの実装を担当しました。ゲームベースの学習アプローチを取り入れることで、学習者のモチベーションを維持し、継続的な学習を支援することを目的としています。チーム開発では、学生・教師ともにLaravelを用いたWebアプリケーションとして設計・開発しました。その後、学生の利便性向上を目的として、Flutterを用いたモバイルアプリの開発を個人で行い、一部機能を実装しました。
 
 ## スクリーンショット (Mobile App)
@@ -68,7 +70,7 @@ Kotobeeは、日本語を学習する学生と、学習状況を管理する教�
 
 ## イメージ
 
-### 生徒イメージ
+### 生徒イメージ(webフロントエンド)
 - [ログイン画面1](assets/student_images/login_image_1.png)
 - [ログイン画面2](assets/student_images/login_image_2.png)
 - [ゲーム選択画面](assets/student_images/game_selection_image.png)
@@ -87,6 +89,12 @@ Kotobeeは、日本語を学習する学生と、学習状況を管理する教�
 - [文章リスト](assets/student_images/sentence_list.png)
 - [プロフィール編集画面1](assets/student_images/profile_edit_1.png)
 - [プロフィール編集画面2](assets/student_images/profile_edit_2.png)
+
+### 生徒イメージ(flutter)
+
+
+
+
 
 ### グループ管理者イメージ
 - [グループオプション選択画面](assets/administrator_images/group_sub.png)
