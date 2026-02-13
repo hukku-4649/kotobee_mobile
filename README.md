@@ -114,6 +114,12 @@ Kotobeeの名称に合わせて蜂を連想させるデザインを採用し、�
 - `mobile_flutter/` : 学習者向けFlutterモバイルアプリ
 - `web_laravel/`   : LaravelバックエンドAPIおよび教師用Webダッシュボード
 
+## イメージ
+
+### 生徒イメージ
+[ログイン画面1](assets/student_images/login_image_1.png)
+[ログイン画面2](assets/student_images/login_image_2.png)
+
 ## おわりに
 本プロジェクトは、他のメンバーと協力しながら、要件定義から設計・実装・テストまで一連の工程を経験することができました。  
 上流工程から下流工程まで携わることで、チーム開発の流れや役割分担の重要性を学ぶことができました。
