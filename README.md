@@ -119,6 +119,26 @@ Kotobeeの名称に合わせて蜂を連想させるデザインを採用し、�
 ### 生徒イメージ
 [ログイン画面1](assets/student_images/login_image_1.png)
 [ログイン画面2](assets/student_images/login_image_2.png)
+[ゲーム選択画面](assets/student_images/game_selection_image.png)
+[ゲーム開始モーダル](assets/student_images/kana_game_start.png)
+[ゲーム終了モーダル](assets/student_images/kana_game_finish.png)
+[Kanaゲーム選択画面](assets/student_images/kana_game_selection.png)
+[Kanaゲームプレイ画面](assets/student_images/kana_game_play.png)
+[VocabとGrammarゲームの選択画面](assets/student_images/vocab_grammar_selection.png)
+[Vocabゲームプレイ画面](assets/student_images/vocab_game_play.png)
+[Grammarゲームプレイ画面](assets/student_images/grammar_game_play.png)
+[グループ検索画面](assets/student_images/group_search.png)
+[グループ申請画面](assets/student_images/group_application.png)
+[プロフィール画面1](assets/student_images/profile_1.png)
+[プロフィール画面2](assets/student_images/profile_2.png)
+[単語リスト](assets/student_images/word_list.png)
+[文章リスト](assets/student_images/sentence_list.png)
+[プロフィール編集画面1](assets/student_images/profile_edit_1.png)
+[プロフィール編集画面2](assets/student_images/profile_edit_2.png)
+
+
+
+
 
 ## おわりに
 本プロジェクトは、他のメンバーと協力しながら、要件定義から設計・実装・テストまで一連の工程を経験することができました。  
