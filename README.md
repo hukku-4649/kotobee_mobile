@@ -1,19 +1,9 @@
-## Status
-⚠️ This project is currently under active development (Work in Progress).
+## 概要
+Kotobeeは、日本語を学習する学生と、学習状況を管理する教師を対象とした日本語学習アプリケーションです。本アプリケーションは、3名のチームで約3か月間かけて開発しました。私は主に、Grammarゲーム、ステージ選択画面、そして教師用ダッシュボードの実装を担当しました。ゲームベースの学習アプローチを取り入れることで、学習者のモチベーションを維持し、継続的な学習を支援することを目的としています。チーム開発では、学生・教師ともにLaravelを用いたWebアプリケーションとして設計・開発しました。その後、学生の利便性向上を目的として、Flutterを用いたモバイルアプリの開発を個人で行い、一部機能を実装しました。
 
-Kotobee is a Japanese learning application designed for both students who study Japanese and teachers who monitor learning progress.
-The application was developed by a team over a period of approximately three months.
+## スクリーンショット (Mobile App)
 
-I was mainly responsible for implementing the grammar game, stage selection screen, and the teacher dashboard.
-By adopting a game-based learning approach, the application aims to keep students motivated and support continuous learning.
-
-Initially, the system was designed as a web-only application for both students and teachers.
-However, I proposed introducing a mobile application to improve accessibility for students.
-As a result, the student-facing application is currently being developed and delivered as a mobile app using Flutter.
-
-## Screenshots (Mobile App)
-
-### Stage Selection
+### ステージ選択画面
 <p align="center">
   <img src="assets/screenshots/stage_select.png" width="300" />
 </p>
@@ -35,47 +25,44 @@ As a result, the student-facing application is currently being developed and del
   </tr>
 </table>
 
-## Screenshots (Teacher Dashboard / Web)
+## スクリーンショット (Teacher Dashboard / Web)
 
 <p align="center">
   <img src="assets/screenshots/teacher_dashboard.png" width="900" />
 </p>
 
-## Implemented Features
-- Three learning games for studying Japanese:
+## 実装済み機能
+- 日本語学習のための3つのゲーム
   - Kana
   - Vocabulary
   - Grammar
-- Web dashboard for teachers to monitor students’ learning progress
-- User authentication (login)
-- Payment system
+- 教師が生徒の学習進捗を確認できるWebダッシュボード
+- ユーザー認証（ログイン機能）
+- 決済システム
 
-## Planned Features and Improvements
-- More robust authentication system (Google login and email-based login)
-- UI/UX improvements for both mobile and web applications
-- Code refactoring and overall codebase cleanup
-- Chat functionality between students and teachers
-- Bug fixes and minor stability improvements
+## 今後の機能追加・改善予定
+- より強固な認証システム（Googleログイン、メール認証ログイン）
+- モバイル・Web両方のUI/UX改善
+- 生徒と教師間のチャット機能
+- バグ修正および安定性向上
 
-## Tech Stack
+## 技術スタック
 
-### Mobile Application
+### モバイルアプリケーション
 - Flutter
 - Dart
 
-### Backend / Web Application
+### バックエンド / Webアプリケーション
 - Laravel
 - PHP
 - MySQL
 
-### Development Environment & Tools
+### 開発環境・ツール
 - MAMP (local development environment)
 - Git / GitHub
 
 ## Project Structure
-- `mobile_flutter/` : Flutter-based mobile application for learners  
-- `web_laravel/`   : Laravel backend API and teacher web dashboard  
+- `mobile_flutter/` : 学習者向けFlutterモバイルアプリ
+- `web_laravel/`   : LaravelバックエンドAPIおよび教師用Webダッシュボード
 
-## Note
-This project is still evolving, and some parts of the implementation require further refinement.
-I am continuously improving the codebase, enhancing the UI/UX, and addressing known issues to increase overall quality and maintainability.
+
