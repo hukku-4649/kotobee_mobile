@@ -1,4 +1,4 @@
-## 概要
+## 📖 概要
 
 **アプリ名**：Kotobee  
 **開発人数**：3人  
@@ -13,13 +13,15 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 チーム開発では、Laravelを用いたWebアプリケーションとして開発しました。<br>
 その後、学生の利便性向上を目的として、Flutterを用いたモバイルアプリとして一部機能を実装しました。
 
-## スクリーンショット (Mobile App)
+## 📸 スクリーンショット
 
 ### ステージ選択画面
 
 <p align="center">
   <img src="assets/screenshots/stage_select.png" width="300" />
 </p>
+
+### 各ゲームのプレイ画面
 
 <table align="center">
   <tr>
@@ -38,13 +40,13 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
   </tr>
 </table>
 
-## スクリーンショット (Teacher Dashboard / Web)
+### グループ管理者ダッシュボード
 
 <p align="center">
   <img src="assets/screenshots/teacher_dashboard.png" width="900" />
 </p>
 
-## 実装済み機能
+## ✨ 主な機能
 - 日本語学習のための3つのゲーム
   - Kana
   - Vocabulary
@@ -53,13 +55,13 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - ユーザー認証（ログイン機能）
 - 決済システム
 
-## 今後の機能追加・改善予定
+## 🚀 主な改善点
 - より強固な認証システム（Googleログイン、メール認証ログイン）
 - モバイル・Web両方のUI/UX改善
 - 生徒と教師間のチャット機能
 - バグ修正および安定性向上
 
-## 使用技術
+## 🛠 使用技術
 
 ### モバイルアプリケーション
 - Flutter
@@ -74,13 +76,13 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - MAMP (local development environment)
 - Git / GitHub
 
-## プロジェクト構成
+## 📂 プロジェクト構成
 - `mobile_flutter/` : 学習者向けFlutterモバイルアプリ
 - `web_laravel/`   : LaravelバックエンドAPIおよび教師用Webダッシュボード
 
-## 🎨 イメージ
+## 📸 イメージ
 
-### 👨‍🎓 学習者画面(webフロントエンド)
+### 学習者画面(webフロントエンド)
 - [ログイン画面1](assets/student_images/login_image_1.png)
 - [ログイン画面2](assets/student_images/login_image_2.png)
 - [ゲーム選択画面](assets/student_images/game_selection_image.png)
@@ -100,7 +102,7 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - [プロフィール編集画面1](assets/student_images/profile_edit_1.png)
 - [プロフィール編集画面2](assets/student_images/profile_edit_2.png)
 
-### 📱 学習者画面(flutter)
+### 学習者画面(flutter)
 - [ログイン画面](assets/student_images_flutter/login.png)
 - [ゲーム選択画面](assets/student_images_flutter/game_selection.png)
 - [Kanaゲームプレイ画面](assets/student_images_flutter/kana_game_play.png)
@@ -110,7 +112,7 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - [プロフィール画面](assets/student_images_flutter/profile.png)
 
 
-### 🧑‍🏫 グループ管理者画面
+### グループ管理者画面
 - [グループオプション選択画面](assets/administrator_images/group_sub.png)
 - [決済画面](assets/administrator_images/group_purchase.png)
 - [決済終了画面](assets/administrator_images/purchase_finish.png)
