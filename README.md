@@ -129,7 +129,7 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 
 ## 💡 工夫した箇所
 
-### 1. ゲーム選択画面
+### 1. ステージ選択画面
 
 <p align="center">
   <img src="assets/screenshots/stage_select.png" width="300" />
