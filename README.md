@@ -78,9 +78,9 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - `mobile_flutter/` : 学習者向けFlutterモバイルアプリ
 - `web_laravel/`   : LaravelバックエンドAPIおよび教師用Webダッシュボード
 
-## イメージ
+## 🎨 イメージ
 
-### 生徒イメージ(webフロントエンド)
+### 👨‍🎓 学習者画面(webフロントエンド)
 - [ログイン画面1](assets/student_images/login_image_1.png)
 - [ログイン画面2](assets/student_images/login_image_2.png)
 - [ゲーム選択画面](assets/student_images/game_selection_image.png)
@@ -100,7 +100,7 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - [プロフィール編集画面1](assets/student_images/profile_edit_1.png)
 - [プロフィール編集画面2](assets/student_images/profile_edit_2.png)
 
-### 生徒イメージ(flutter)
+### 📱 学習者画面(flutter)
 - [ログイン画面](assets/student_images_flutter/login.png)
 - [ゲーム選択画面](assets/student_images_flutter/game_selection.png)
 - [Kanaゲームプレイ画面](assets/student_images_flutter/kana_game_play.png)
@@ -110,7 +110,7 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - [プロフィール画面](assets/student_images_flutter/profile.png)
 
 
-### グループ管理者イメージ
+### 🧑‍🏫 グループ管理者画面
 - [グループオプション選択画面](assets/administrator_images/group_sub.png)
 - [決済画面](assets/administrator_images/group_purchase.png)
 - [決済終了画面](assets/administrator_images/purchase_finish.png)
