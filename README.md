@@ -100,7 +100,7 @@ Kotobeeは、日本語学習者とグループ管理者を対象とした日本�
 - [プロフィール編集画面1](assets/student_images/profile_edit_1.png)
 - [プロフィール編集画面2](assets/student_images/profile_edit_2.png)
 
-### 生徒イメージ(flutter、一部のみ)
+### 生徒イメージ(flutter)
 - [ログイン画面](assets/student_images_flutter/login.png)
 - [ゲーム選択画面](assets/student_images_flutter/game_selection.png)
 - [Kanaゲームプレイ画面](assets/student_images_flutter/kana_game_play.png)
